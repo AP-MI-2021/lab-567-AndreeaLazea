@@ -9,7 +9,7 @@ def creeaza_cheltuiala(numar_apartament, suma, zi, luna, an, intretinere, canal,
     :param intretinere: float
     :param canal: float
     :param alte_cheltuieli: float
-    :return:
+    :return: o lista 
     """
     cheltuiala = []
     cheltuiala.append(numar_apartament)
