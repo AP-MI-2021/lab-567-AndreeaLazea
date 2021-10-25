@@ -29,35 +29,35 @@ def get_numar_apartament(cheltuiala):
     :param cheltuiala: dictionar ce contine o cheltuiala
     :return:numarul de apartament al cheltuielii
     """
-    return cheltuiala["numar_ap"]
+    return cheltuiala[0]
 
 
 def get_suma(cheltuiala):
-    return cheltuiala["suma"]
+    return cheltuiala[1]
 
 
 def get_data_zi(cheltuiala):
-    return cheltuiala["data_zi"]
+    return cheltuiala[2]
 
 
 def get_data_luna(cheltuiala):
-    return cheltuiala["data_luna"]
+    return cheltuiala[3]
 
 
 def get_data_an(cheltuiala):
-    return cheltuiala["data_an"]
+    return cheltuiala[4]
 
 
 def get_intretinere(cheltuiala):
-    return cheltuiala["intretinere"]
+    return cheltuiala[5]
 
 
 def get_canal(cheltuiala):
-    return cheltuiala["canal"]
+    return cheltuiala[6]
 
 
 def get_alte_cheltuieli(cheltuiala):
-    return cheltuiala["alte_cheltuieli"]
+    return cheltuiala[7]
 
 
 def to_string(cheltuiala):
