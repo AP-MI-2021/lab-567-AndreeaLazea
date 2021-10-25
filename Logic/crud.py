@@ -67,6 +67,12 @@ def modifica_cheltuiala(numar_apartament, suma, zi, luna, an, intretinere, canal
 
 
 def verificare_existenta_apartament(nr_apartament, list_1):
+     """
+    verifica daca exista un apartament cu respectivul numar in lista si returneaza True, daca exista si False in caz contrar
+    :param nr_apartament: string
+    :param list_1: lista in care verifica
+    :return: True, daca exista si False in caz contrar
+    """
     for apartament in list_1:
         if get_numar_apartament(apartament) == nr_apartament:
             return True
