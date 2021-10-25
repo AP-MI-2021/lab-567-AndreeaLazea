@@ -1,4 +1,5 @@
-from Logic.crud import adauga_cheltuiala, sterge_cheltuiala, modifica_cheltuiala, verificare_existenta_apartament
+from Logic.crud import adauga_cheltuiala, sterge_cheltuiala, modifica_cheltuiala, \
+    get_by_number
 from domain.cheltuieli import to_string
 
 
@@ -29,7 +30,7 @@ def ui_adaugare_cheltuiala(list_1):
 
 def ui_sterge_cheltuiala(list_1):
     nr_apartament = input("dati numarul de apartament pe care doriti sa-l stergeti stergere: ")
-    if verificare_existenta_apartament(nr_apartament, list_1) is False:
+    if get_by_number(nr_apartament, list_1) is None:
         print("nu exista apartament cu numarul dat de la tastatura, apartamentele valabile sunt: ")
         show_all(list_1)
         continuare = input("doriti sa reincercati cu un alt apartament valid? Scrieti DA/NU")
@@ -43,7 +44,7 @@ def ui_sterge_cheltuiala(list_1):
 
 def ui_modifica_cheltuiala(list_1):
     nr_apartament = input("dati numarul de apartament al apartamentului de modificat: ")
-    if verificare_existenta_apartament(nr_apartament, list_1) is False:
+    if get_by_number(nr_apartament, list_1) is None:
         print("nu exista apartament cu numarul dat de la tastatura, apartamentele valabile sunt: ")
         show_all(list_1)
         continuare = input("doriti sa reincercati cu un alt apartament valid? Scrieti DA/NU")
