@@ -11,16 +11,16 @@ def creeaza_cheltuiala(numar_apartament, suma, zi, luna, an, intretinere, canal,
     :param alte_cheltuieli: float
     :return:
     """
-    return {
-        "numar_ap": numar_apartament,
-        "suma": suma,
-        "data_zi": zi,
-        "data_luna": luna,
-        "data_an": an,
-        "intretinere": intretinere,
-        "canal": canal,
-        "alte_cheltuieli": alte_cheltuieli
-    }
+    cheltuiala = []
+    cheltuiala.append(numar_apartament)
+    cheltuiala.append(suma)
+    cheltuiala.append(zi)
+    cheltuiala.append(luna)
+    cheltuiala.append(an)
+    cheltuiala.append(intretinere)
+    cheltuiala.append(canal)
+    cheltuiala.append(alte_cheltuieli)
+    return cheltuiala
 
 
 def get_numar_apartament(cheltuiala):
