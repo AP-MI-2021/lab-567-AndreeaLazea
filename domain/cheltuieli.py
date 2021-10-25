@@ -62,9 +62,9 @@ def get_alte_cheltuieli(cheltuiala):
 
 def to_string(cheltuiala):
     """
-
-    :param cheltuiala:
-    :return:
+    va printa sub forma de string datele
+    :param cheltuiala: lista
+    :return: datele sub forma de string
     """
     return "numar_apartament: {}, suma: {}. zi: {}, luna: {}, an: {}, intretinere: {}, canal: {}, alte_cheltuieli: {} ".format(
         get_numar_apartament(cheltuiala),
