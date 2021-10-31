@@ -6,5 +6,4 @@ def main():
     run_all_tests()
     run_menu([])
 
-
 main()
