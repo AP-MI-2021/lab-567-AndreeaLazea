@@ -1,5 +1,6 @@
 from Logic.crud import adauga_cheltuiala
-from Logic.functiionalitate import stergerea_tuturor_cheltuielilor, verificare_data, corectitudine_data
+from Logic.functiionalitate import stergerea_tuturor_cheltuielilor, verificare_data, corectitudine_data, \
+    ordonare_descrescatoare
 
 
 def test_stergerea_tuturor_cheltuielilor():
@@ -32,3 +33,12 @@ def test_corectitudine_data():
     assert corectitudine_data("22.30.2002") is False
     assert corectitudine_data("31.04.2002") is False
     assert corectitudine_data("30.03.2002") is True
+
+
+def test_ordonare_descrescatoare():
+    lst = []
+    lst = adauga_cheltuiala(1, 25, 200, "03.05.2021", " ", lst)
+    lst = adauga_cheltuiala(2, 25, 200.5, "03.05.2021", " ", lst)
+    lst = adauga_cheltuiala(3, 24, 140, "03.05.2021", " ", lst)
+    lst = ordonare_descrescatoare(lst)
+    assert lst == [[2, 25, 200.5, "03.05.2021", ' '], [1, 25, 200, "03.05.2021", ' '], [3, 24, 140, "03.05.2021", ' ']]

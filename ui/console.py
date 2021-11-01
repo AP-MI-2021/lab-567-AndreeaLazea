@@ -1,6 +1,7 @@
 from Logic.crud import adauga_cheltuiala, sterge_cheltuiala, modifica_cheltuiala, \
     get_by_id
-from Logic.functiionalitate import stergerea_tuturor_cheltuielilor, verificare_data, corectitudine_data
+from Logic.functiionalitate import stergerea_tuturor_cheltuielilor, verificare_data, corectitudine_data, \
+    ordonare_descrescatoare
 from domain.cheltuieli import to_string
 
 
@@ -13,6 +14,8 @@ def print_menu():
     print("1.4 - Determinarea celei mai mari cheltuieli pentru fiecare tip de cheltuială.")
     print("1.5 - Ordonarea cheltuielilor descrescător după sumă.")
     print("1.6 - Afișarea sumelor lunare pentru fiecare apartament.")
+    print("1.7. Undo.")
+    print("1.8 Redo")
     print("a. Afisare cheltuiala")
     print("x. iesire")
 
@@ -110,6 +113,10 @@ def ui_verificare_data(list_1):
         return verificare_data(data_tastatura, list_1, number)
 
 
+def ui_ordonare_descrescatoare(list_1):
+    return ordonare_descrescatoare(list_1)
+
+
 def run_menu(list_1):
     while True:
         print_menu()
@@ -127,11 +134,15 @@ def run_menu(list_1):
         elif option == '1.3':
             list_1 = ui_verificare_data(list_1)
         elif option == '1.4':
-            pass
+            print("ne cerem scuze, functia nu este inca finisata! Va rugam sa reveniti!")
         elif option == '1.5':
-            pass
+            list_1 = ui_ordonare_descrescatoare(list_1)
         elif option == '1.6':
-            pass
+            print("ne cerem scuze, functia nu este inca finisata! Va rugam sa reveniti!")
+        elif option == '1.7':
+            print("ne cerem scuze, functia nu este inca finisata! Va rugam sa reveniti!")
+        elif option == '1.8':
+            print("ne cerem scuze, functia nu este inca finisata! Va rugam sa reveniti!")
         elif option == 'x':
             break
         else:

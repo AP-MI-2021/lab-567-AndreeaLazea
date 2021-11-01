@@ -87,3 +87,16 @@ def verificare_data(data_tastatura, lst, number):
         else:
             new_list.append(cheltuiala)
     return new_list
+
+
+def ordonare_descrescatoare(list_1):
+    n = len(list_1)
+    for i in range(n):
+        already_sorted = True
+        for j in range(n - i - 1):
+            if get_suma(list_1[j]) < get_suma(list_1[j + 1]):
+                list_1[j], list_1[j + 1] = list_1[j + 1], list_1[j]
+                already_sorted = False
+        if already_sorted:
+            break
+    return list_1
