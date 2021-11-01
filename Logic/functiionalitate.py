@@ -1,4 +1,5 @@
 from domain.cheltuieli import get_numar_apartament, get_data, get_suma, get_id, get_tip, creeaza_cheltuiala
+import re
 
 
 def stergerea_tuturor_cheltuielilor(numar_apartament, lst):
@@ -9,9 +10,9 @@ def stergerea_tuturor_cheltuielilor(numar_apartament, lst):
     :return: o lista noua, fara cheltuielile listei precedente
     """
     new_lst = []
-    for cheltuiala in lst:
-        if get_numar_apartament(cheltuiala) != numar_apartament:
-            new_lst.append(cheltuiala)
+    for cheltuialaa in lst:
+        if get_numar_apartament(cheltuialaa) != numar_apartament:
+            new_lst.append(cheltuialaa)
     return new_lst
 
 
@@ -66,15 +67,13 @@ def corectitudine_data(data_tastatura):
     return True
 
 
-import re
-
-
 def check_if_str_is_special_character(list_1):
     for x in list_1:
-        string_check = re.compile('[@_!#$%^&*()<>?/\|}{~:,~`abcdefghijklmnopqrstuvwxys]')
-        if (string_check.search(x) != None):
+        string_check = re.compile('[@_!#$%^&*()<>?/|}{~:,`abcdefghijklmnopqrstuvwxy]')
+        if string_check.search(x) is not None:
             return False
     return True
+
 
 def verificare_data(data_tastatura, lst, number):
     list_of_string = list(data_tastatura)
