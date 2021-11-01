@@ -66,14 +66,22 @@ def corectitudine_data(data_tastatura):
     return True
 
 
+import re
+
+
+def check_if_str_is_special_character(list_1):
+    for x in list_1:
+        string_check = re.compile('[@_!#$%^&*()<>?/\|}{~:,~`abcdefghijklmnopqrstuvwxys]')
+        if (string_check.search(x) != None):
+            return False
+    return True
+
 def verificare_data(data_tastatura, lst, number):
     list_of_string = list(data_tastatura)
+    if check_if_str_is_special_character(list_of_string) is False:
+        return []
     if corectitudine_data(data_tastatura) is False:
         return []
-    else:
-        for x in list_of_string:
-            if x[1:].isdigit() is True and x != '.':
-                return []
     new_list = []
     for cheltuiala in lst:
         if get_data(cheltuiala) == data_tastatura:
