@@ -1,6 +1,6 @@
 from Logic.crud import adauga_cheltuiala
 from Logic.functiionalitate import stergerea_tuturor_cheltuielilor, verificare_data, corectitudine_data, \
-    ordonare_descrescatoare
+    ordonare_descrescatoare, cea_mai_mare_cheltuiala, suma_lunara_ap
 
 
 def test_stergerea_tuturor_cheltuielilor():
@@ -42,3 +42,22 @@ def test_ordonare_descrescatoare():
     lst = adauga_cheltuiala(3, 24, 140, "03.05.2021", " ", lst)
     lst = ordonare_descrescatoare(lst)
     assert lst == [[2, 25, 200.5, "03.05.2021", ' '], [1, 25, 200, "03.05.2021", ' '], [3, 24, 140, "03.05.2021", ' ']]
+
+
+def test_cea_mai_mare_cheltuiala():
+    lst = []
+    lst = adauga_cheltuiala(1, 25, 200, "03.05.2021", "canal", lst)
+    lst = adauga_cheltuiala(2, 25, 200.5, "03.05.2021", "canal", lst)
+    lst = adauga_cheltuiala(3, 24, 140, "03.05.2021", "alte cheltuieli", lst)
+    lst = adauga_cheltuiala(4, 25, 150, "09.10.2021", "intretinere", lst)
+    assert cea_mai_mare_cheltuiala(lst) == ["canal"]
+
+
+def test_suma_lunara_ap():
+    lst = []
+    lst = adauga_cheltuiala(1, 25, 200, "03.05.2021", "canal", lst)
+    lst = adauga_cheltuiala(2, 25, 200.5, "03.05.2021", "canal", lst)
+    lst = adauga_cheltuiala(3, 24, 140, "03.05.2020", "alte cheltuieli", lst)
+    lst = adauga_cheltuiala(4, 25, 150, "05.05.2020", "intretinere", lst)
+    lst = adauga_cheltuiala(4, 25, 150, "09.10.2021", "intretinere", lst)
+    assert suma_lunara_ap(lst) == {25: {'2021': {5: 400.5, 10: 150}, '2020': {5: 150}}, 24: {'2020': {5: 140}}}

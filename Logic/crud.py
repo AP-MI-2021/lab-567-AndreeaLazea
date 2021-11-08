@@ -36,6 +36,10 @@ def sterge_cheltuiala(id_1, lst):
     :param lst: lista in care cauta
     :return: noua lista fara apartamentul respectiv
     """
+    if get_by_id(id_1, lst) is None:
+        raise ValueError('"nu exista apartament cu id-ul dat de la tastatura, '
+                         'va vom intoarce la meniul principal! apartamentele valabile sunt: "')
+
     new_list = []
     for cheltuiala in lst:
         if get_id(cheltuiala) != id_1:

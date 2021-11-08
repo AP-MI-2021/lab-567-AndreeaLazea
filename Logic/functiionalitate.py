@@ -17,6 +17,11 @@ def stergerea_tuturor_cheltuielilor(numar_apartament, lst):
 
 
 def corectitudine_data(data_tastatura):
+    """
+    vedrifica corectitudinea datii
+    :param data_tastatura: o data de la tastatura
+    :return: True, daca data este scrisa corect si False in caz contrar
+    """
     list_of_string = list(data_tastatura)
     if len(list_of_string) < 10 or len(list_of_string) > 10:
         return False
@@ -68,6 +73,11 @@ def corectitudine_data(data_tastatura):
 
 
 def check_if_str_is_special_character(list_1):
+    """
+    verifica daca in lista exista alte caractere, inafara de numere
+    :param list_1: o lista
+    :return: True daca e format doar din cifre si False in caz contrar
+    """
     for x in list_1:
         string_check = re.compile('[@_!#$%^&*()<>?/|}{~:,`abcdefghijklmnopqrstuvwxy]')
         if string_check.search(x) is not None:
@@ -76,6 +86,13 @@ def check_if_str_is_special_character(list_1):
 
 
 def verificare_data(data_tastatura, lst, number):
+    """
+    Verifica
+    :param data_tastatura:
+    :param lst:
+    :param number:
+    :return:
+    """
     list_of_string = list(data_tastatura)
     if check_if_str_is_special_character(list_of_string) is False:
         return []
@@ -97,6 +114,11 @@ def verificare_data(data_tastatura, lst, number):
 
 
 def ordonare_descrescatoare(list_1):
+    """
+    realizeaza ordonarea descrescatoare a unei liste
+    :param list_1: o lista
+    :return: lista ordonata desc
+    """
     n = len(list_1)
     for i in range(n):
         already_sorted = True
@@ -107,3 +129,65 @@ def ordonare_descrescatoare(list_1):
         if already_sorted:
             break
     return list_1
+
+
+def cea_mai_mare_cheltuiala(list_1):
+    suma_canal = 0
+    suma_intretinere = 0
+    suma_alte_cheltuieli = 0
+    for cheltuiala in list_1:
+        if get_tip(cheltuiala) == "canal":
+            suma_canal = suma_canal + get_suma(cheltuiala)
+        elif get_tip(cheltuiala) == "intretinere":
+            suma_intretinere = suma_intretinere + get_suma(cheltuiala)
+        elif get_tip(cheltuiala) == "alte cheltuieli":
+            suma_alte_cheltuieli = suma_alte_cheltuieli + get_suma(cheltuiala)
+    if suma_canal == 0 and suma_intretinere == 0 and suma_alte_cheltuieli == 0:
+        raise ValueError('lista este goala deja')
+    else:
+        if suma_canal > suma_intretinere and suma_canal > suma_alte_cheltuieli:
+            maxim = suma_canal
+        elif suma_intretinere > suma_canal and suma_intretinere > suma_alte_cheltuieli:
+            maxim = suma_intretinere
+        else:
+            maxim = suma_alte_cheltuieli
+        new_list = []  # in cazul in care sunt mai multe cu aceeasi suma, le va adauga in lista pe care o va returna!
+        if suma_canal == maxim:
+            new_list = new_list + ["canal"]
+        if suma_intretinere == maxim:
+            new_list = new_list + [" intretinere"]
+        if suma_alte_cheltuieli == maxim:
+            new_list = new_list + [" alte cheltuieli"]
+        return new_list
+
+
+def suma_lunara_ap(list_1):
+    """
+
+    :param list_1:
+    :return:
+    """
+    dictionary = {}
+    for cheltuiala in list_1:
+        numar_apartament = get_numar_apartament(cheltuiala)
+        suma = get_suma(cheltuiala)
+        data = get_data(cheltuiala)
+        list_of_string = list(data)
+        if list_of_string[3] == '0':
+            month = int(list_of_string[4])
+        else:
+            new_string = list_of_string[3] + list_of_string[4]
+            month = int(new_string)
+        year = list_of_string[6] + list_of_string[7] + list_of_string[8] + list_of_string[9]
+        year_1 = int(year)
+        if numar_apartament in dictionary:
+            if year in dictionary[numar_apartament]:
+                if month in dictionary[numar_apartament][year]:
+                    dictionary[numar_apartament][year][month] = dictionary[numar_apartament][year][month] + suma
+                else:
+                    dictionary[numar_apartament][year][month] = suma
+            else:
+                dictionary[numar_apartament][year] = {month : suma}
+        else:
+            dictionary[numar_apartament] = {year: {month: suma}}
+    return dictionary
