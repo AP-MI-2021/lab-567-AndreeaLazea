@@ -1,6 +1,7 @@
 from Logic.crud import adauga_cheltuiala, sterge_cheltuiala, modifica_cheltuiala
 import Logic.functiionalitate
 from domain.cheltuieli import to_string, get_id
+from ui.command_line import main_command_line
 
 
 def print_menu():
@@ -205,5 +206,7 @@ def run_menu(list_1):
                 print("nu se poate realiza redo la o lista goala")
         elif option == 'x':
             break
+        elif option == 'help':
+            main_command_line()
         else:
             print("optiune invalida, reincercati!")

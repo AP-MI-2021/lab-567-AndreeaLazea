@@ -1,9 +1,20 @@
 from Logic.crud import adauga_cheltuiala, modifica_cheltuiala, sterge_cheltuiala
-from ui.console import show_all
+from domain.cheltuieli import to_string
+
+
+def show_all(list_1):
+    if bool(list_1) is False:
+        print("Lista de cheltuieli este acum goala")
+    else:
+        for cheltuiala in list_1:
+            print(to_string(cheltuiala))
 
 
 def main_command_line(new_list_1):
     while True:
+        print("Buna ziua! Aveti optiunea de a folosi o consola in care va sunt cerute datele inaintea adaugarii lor, iar alta in care le adaugati ca o lista,"
+              "Daca doriti a folosi meniul in care le adaugati drept o lista, tastati 'help'. Altfel, tastati 'stop'"
+              "si programul va va duce la meniul consola. Multumim!")
         message = input()
         if message == "help":
             print("add,id,numar_apartament,suma, data, tip - va adauga un element nou in lista de cheltuieli")

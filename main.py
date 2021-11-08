@@ -1,4 +1,3 @@
-
 from tests.test_all import run_all_tests
 from ui.console import run_menu
 
